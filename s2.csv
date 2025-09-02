@@ -1,0 +1,4 @@
+id,customer,product,quantity,price,date
+4,Diana,Apples,12,2.4,2025-09-01
+5,Evan,Bananas,7,1.1,2025-09-02
+6,Frank,Oranges,6,2.9,2025-09-02
