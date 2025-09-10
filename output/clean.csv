@@ -1,7 +1,0 @@
-customer,date,id,price,product,quantity
-Alice,2025-09-01,1,2.5,Apples,10
-Bob,2025-09-01,2,1.2,Bananas,5
-Charlie,2025-09-02,3,3.0,Oranges,8
-Diana,2025-09-01,4,2.4,Apples,12
-Evan,2025-09-02,5,1.1,Bananas,7
-Frank,2025-09-02,6,2.9,Oranges,6

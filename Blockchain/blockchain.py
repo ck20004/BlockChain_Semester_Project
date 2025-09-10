@@ -24,7 +24,7 @@ class Block:
             "nonce": self.nonce
         }, sort_keys=True)
         return hashlib.sha256(block_string.encode()).hexdigest()
-    
+
     def mine_block(self, difficulty: int = 4):
         """Mine block with proof of work"""
         target = "0" * difficulty
@@ -63,8 +63,7 @@ class ETLBlockchain:
     def get_latest_block(self) -> Block:
         return self.chain[-1]
     
-    def add_etl_data_block(self, s1_hash: str, s2_hash: str, dataset_hash: str, 
-                          etl_metadata: Dict[str, Any] = None):
+    def add_etl_data_block(self, s1_hash: str, s2_hash: str, dataset_hash: str, etl_metadata: Dict[str, Any] = None):
         """Add a new block containing ETL data hashes"""
         data = {
             "type": "etl_data",
@@ -86,7 +85,7 @@ class ETLBlockchain:
         self.chain.append(new_block)
         return new_block
     
-    def add_block_from_ledger(self, ledger_path: Path = Path("output/ledger.json")):
+    def add_block_from_ledger(self, ledger_path: Path = Path("../ETL_Pipeline/output/ledger.json")):
         """Add block using data from the ETL ledger"""
         if not ledger_path.exists():
             raise FileNotFoundError(f"Ledger file not found: {ledger_path}")

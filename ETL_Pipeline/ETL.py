@@ -60,7 +60,7 @@ def deterministic_csv_bytes(df: pd.DataFrame) -> bytes:
     df_out.to_csv(buf, index=False, lineterminator="\n", na_rep="", quoting=csv.QUOTE_MINIMAL, date_format="%Y-%m-%dT%H:%M:%S%z")
     return buf.getvalue().encode("utf-8")
 
-def etl(csv1: Path, csv2: Path, mode: str="union", join_key: Optional[str]=None, date_columns: Optional[List[str]]=None, output: Path=Path("output/clean.csv"), ledger: Path=Path("output/ledger.json")) -> None:
+def etl(csv1: Path, csv2: Path, mode: str="union", join_key: Optional[str]=None, date_columns: Optional[List[str]]=None, output: Path=Path("./output/clean.csv"), ledger: Path=Path("./output/ledger.json")) -> None:
     # --- EXTRACT (and immediate extraction-hash generation) ---
     raw1 = read_raw_bytes(csv1)
     raw2 = read_raw_bytes(csv2)
@@ -151,8 +151,8 @@ def main():
     p.add_argument("--mode", choices=["union","join"], default="union")
     p.add_argument("--join-key", default=None)
     p.add_argument("--date-columns", nargs="*", default=None)
-    p.add_argument("--output", type=Path, default=Path("output/clean.csv"))
-    p.add_argument("--ledger", type=Path, default=Path("output/ledger.json"))
+    p.add_argument("--output", type=Path, default=Path("./output/clean.csv"))
+    p.add_argument("--ledger", type=Path, default=Path("./output/ledger.json"))
     args = p.parse_args()
     etl(args.csv1, args.csv2, mode=args.mode, join_key=args.join_key, date_columns=args.date_columns, output=args.output, ledger=args.ledger)
 
